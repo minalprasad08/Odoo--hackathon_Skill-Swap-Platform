@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Swap Platform</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a1a1a; /* Dark background to match the image */
+            color: #e0e0e0; /* Light text color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: #2a2a2a; /* Slightly lighter dark for the main container */
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            max-width: 900px;
+            width: 100%;
+            border: 1px solid #444; /* Subtle border */
+        }
+        .profile-card {
+            background-color: #333; /* Even lighter dark for cards */
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border: 1px solid #555;
+        }
+        .profile-photo {
+            width: 80px;
+            height: 80px;
+            background-color: #555;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ccc;
+            font-size: 14px;
+            flex-shrink: 0; /* Prevent shrinking */
+        }
+        .skill-tag {
+            background-color: #4a4a4a;
+            color: #bbb;
+            padding: 5px 10px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            white-space: nowrap; /* Prevent tags from breaking */
+        }
+        .request-button {
+            background-color: #6a6aff; /* A shade of blue for the button */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+        .request-button:hover {
+            background-color: #5a5aff;
+        }
+        .pagination-link {
+            background-color: #4a4a4a;
+            color: #bbb;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .pagination-link:hover {
+            background-color: #5a5a5a;
+        }
+        .pagination-link.active {
+            background-color: #6a6aff;
+            color: white;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .profile-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            .profile-info {
+                width: 100%;
+            }
+            .profile-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+            }
+            .request-button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body class="font-inter">
+    <div class="container">
+        <!-- Header Section -->
+        <header class="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
+            <h1 class="text-2xl font-bold text-white">Skill Swap Platform</h1>
+            <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+                <div class="relative w-full sm:w-auto">
+                    <input type="text" placeholder="Search" class="bg-gray-700 text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full">
+                </div>
+                <button class="request-button px-6 py-2 w-full sm:w-auto">Login</button>
+            </div>
+        </header>
+
+        <!-- Availability Filter -->
+        <div class="mb-6">
+            <select class="bg-gray-700 text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option>Availability</option>
+                <option>Available Now</option>
+                <option>Not Available</option>
+            </select>
+        </div>
+
+        <!-- Profile Cards Section -->
+        <div class="profiles">
+            <!-- Profile Card 1 -->
+            <div class="profile-card">
+                <div class="profile-photo">Profile Photo</div>
+                <div class="profile-info flex-grow">
+                    <h2 class="text-xl font-semibold mb-2 text-white">Mare Demo</h2>
+                    <div class="mb-2">
+                        <p class="text-sm text-gray-400 mb-1">Skills Offered:</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">Game design</span>
+                            <span class="skill-tag">Editing</span>
+                            <span class="skill-tag">Graphic design</span>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-400 mb-1">Skill wanted:</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">Game design</span>
+                            <span class="skill-tag">Graphic design</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-meta flex flex-col items-end gap-2">
+                    <span class="text-sm text-gray-400">rating: <span class="font-medium text-white">3.9/5</span></span>
+                    <button class="request-button">Request</button>
+                </div>
+            </div>
+
+            <!-- Profile Card 2 -->
+            <div class="profile-card">
+                <div class="profile-photo">Profile Photo</div>
+                <div class="profile-info flex-grow">
+                    <h2 class="text-xl font-semibold mb-2 text-white">Michell</h2>
+                    <div class="mb-2">
+                        <p class="text-sm text-gray-400 mb-1">Skills Offered:</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">Game design</span>
+                            <span class="skill-tag">Editing</span>
+                            <span class="skill-tag">Graphic design</span>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-400 mb-1">Skill wanted:</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">Game design</span>
+                            <span class="skill-tag">Graphic design</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-meta flex flex-col items-end gap-2">
+                    <span class="text-sm text-gray-400">rating: <span class="font-medium text-white">2.8/5</span></span>
+                    <button class="request-button">Request</button>
+                </div>
+            </div>
+
+            <!-- Profile Card 3 -->
+            <div class="profile-card">
+                <div class="profile-photo">Profile Photo</div>
+                <div class="profile-info flex-grow">
+                    <h2 class="text-xl font-semibold mb-2 text-white">Joe wills</h2>
+                    <div class="mb-2">
+                        <p class="text-sm text-gray-400 mb-1">Skills Offered:</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">Game design</span>
+                            <span class="skill-tag">Editing</span>
+                            <span class="skill-tag">Graphic design</span>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-400 mb-1">Skill wanted:</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">Game design</span>
+                            <span class="skill-tag">Graphic design</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-meta flex flex-col items-end gap-2">
+                    <span class="text-sm text-gray-400">rating: <span class="font-medium text-white">4.0/5</span></span>
+                    <button class="request-button">Request</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination Section -->
+        <div class="flex justify-center items-center gap-2 mt-6">
+            <a href="#" class="pagination-link active">1</a>
+            <a href="#" class="pagination-link">2</a>
+            <a href="#" class="pagination-link">3</a>
+            <a href="#" class="pagination-link">4</a>
+            <a href="#" class="pagination-link">5</a>
+            <a href="#" class="pagination-link">6</a>
+            <a href="#" class="pagination-link">7</a>
+        </div>
+    </div>
+</body>
+</html>

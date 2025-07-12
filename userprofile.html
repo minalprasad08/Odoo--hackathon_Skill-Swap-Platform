@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile (Dark Mode)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font for a more 'sketchy' feel, if possible, or a clean sans-serif */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a1a1a; /* Dark background */
+            color: #e0e0e0; /* Light text color for dark mode */
+        }
+        /* Custom styles to mimic the sketchy lines, using borders and rounded corners */
+        .sketch-input {
+            border-bottom: 1px dashed #777; /* Lighter dashed bottom border for input fields */
+            outline: none; /* Remove outline on focus */
+            background-color: transparent; /* Transparent background */
+            padding-bottom: 2px; /* Small padding to lift text from line */
+            color: #e0e0e0; /* Light text color for input */
+        }
+        .sketch-tag {
+            border: 1px solid #777; /* Lighter solid border for tags */
+            border-radius: 9999px; /* Fully rounded corners */
+            padding: 2px 8px; /* Padding for tags */
+            font-size: 0.75rem; /* Smaller font size for tags */
+            white-space: nowrap; /* Prevent tags from wrapping */
+            background-color: #333; /* Darker background for tags */
+            color: #e0e0e0; /* Light text color for tags */
+        }
+        .profile-circle {
+            border: 1px solid #777; /* Lighter border for the profile photo circle */
+            border-radius: 50%; /* Make it a circle */
+            width: 80px; /* Fixed width */
+            height: 80px; /* Fixed height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 0.75rem;
+            line-height: 1;
+            color: #e0e0e0; /* Light text color */
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+
+    <!-- Main Content Area -->
+    <div class="bg-gray-900 rounded-xl border border-gray-700 p-6 w-full max-w-2xl shadow-lg">
+        <!-- Header -->
+        <div class="mb-6">
+            <!-- Removed: <h1 class="text-xl font-medium mb-1 text-gray-100">Screen 3</h1> -->
+            <h2 class="text-lg font-normal text-gray-300">User profile</h2>
+        </div>
+
+        <!-- Action Buttons and Profile Icon -->
+        <div class="flex justify-between items-start mb-8">
+            <div class="flex space-x-4 text-sm">
+                <button class="text-green-400 font-medium">Save</button>
+                <button class="text-red-400 font-medium">Discard</button>
+                <button class="text-blue-400 font-medium">Swap request</button>
+                <button class="text-gray-400 font-medium">Home</button>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="w-12 h-12 rounded-full overflow-hidden border border-gray-700">
+                    <!-- Placeholder for the user icon -->
+                    <img src="https://placehold.co/48x48/444444/e0e0e0?text=User" alt="User Icon" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Form Fields -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-8 text-sm">
+            <!-- Name -->
+            <div class="flex flex-col">
+                <label for="name" class="mb-1 text-gray-300">Name</label>
+                <input type="text" id="name" class="sketch-input w-full">
+            </div>
+
+            <!-- Profile Photo Section -->
+            <div class="flex flex-col items-center justify-center row-span-2">
+                <div class="profile-circle bg-gray-800">
+                    Profile Photo
+                </div>
+                <div class="flex space-x-2 mt-2 text-blue-400 text-xs">
+                    <a href="#" class="hover:underline">Add/Edit</a>
+                    <a href="#" class="hover:underline">Remove</a>
+                </div>
+            </div>
+
+            <!-- Location -->
+            <div class="flex flex-col">
+                <label for="location" class="mb-1 text-gray-300">Location</label>
+                <input type="text" id="location" class="sketch-input w-full">
+            </div>
+
+            <!-- Skills Offered -->
+            <div class="flex flex-col">
+                <label for="skills-offered" class="mb-1 text-gray-300">Skills Offered</label>
+                <div id="skills-offered-container" class="flex flex-wrap gap-2">
+                    <span class="sketch-tag">Graphic Design</span>
+                    <span class="sketch-tag">Video Editing</span>
+                    <span class="sketch-tag">Photoshop</span>
+                </div>
+                <input type="text" id="skills-offered-input" class="sketch-input w-full mt-2" placeholder="Add new skill...">
+            </div>
+
+            <!-- Skills Wanted -->
+            <div class="flex flex-col">
+                <label for="skills-wanted" class="mb-1 text-gray-300">Skills wanted</label>
+                <div id="skills-wanted-container" class="flex flex-wrap gap-2">
+                    <span class="sketch-tag">Python</span>
+                    <span class="sketch-tag">JavaScript</span>
+                    <span class="sketch-tag">Manager</span>
+                </div>
+                <input type="text" id="skills-wanted-input" class="sketch-input w-full mt-2" placeholder="Add new skill...">
+            </div>
+
+            <!-- Availability -->
+            <div class="flex flex-col">
+                <label for="availability" class="mb-1 text-gray-300">Availability</label>
+                <input type="text" id="availability" class="sketch-input w-full" value="Weekends">
+            </div>
+
+            <!-- Profile Type -->
+            <div class="flex flex-col">
+                <label for="profile-type" class="mb-1 text-gray-300">Profile</label>
+                <input type="text" id="profile-type" class="sketch-input w-full" value="Public">
+            </div>
+
+            <!-- Gemini API Feature: Profile Summary Generator -->
+            <div class="flex flex-col col-span-1 md:col-span-2 mt-4">
+                <button id="generate-summary-btn" class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300 ease-in-out">
+                    Generate Profile Summary ✨
+                </button>
+                <textarea id="profile-summary" class="sketch-input w-full mt-4 p-2 h-32 resize-y" placeholder="Your AI-generated profile summary will appear here..." readonly></textarea>
+                <div id="loading-indicator" class="text-center text-gray-400 mt-2 hidden">Generating...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const generateSummaryBtn = document.getElementById('generate-summary-btn');
+            const profileSummaryTextarea = document.getElementById('profile-summary');
+            const loadingIndicator = document.getElementById('loading-indicator');
+
+            // Function to get text from tags within a container
+            const getTagsText = (containerId) => {
+                const container = document.getElementById(containerId);
+                if (!container) return '';
+                return Array.from(container.querySelectorAll('.sketch-tag'))
+                            .map(tag => tag.textContent.trim())
+                            .join(', ');
+            };
+
+            generateSummaryBtn.addEventListener('click', async () => {
+                const name = document.getElementById('name').value || 'a user';
+                const location = document.getElementById('location').value || 'an undisclosed location';
+                const skillsOffered = getTagsText('skills-offered-container') || 'no specific skills offered';
+                const skillsWanted = getTagsText('skills-wanted-container') || 'no specific skills wanted';
+                const availability = document.getElementById('availability').value || 'flexible';
+
+                const prompt = `Generate a concise and engaging professional profile summary (2-3 sentences) for a user with the following details:
+                Name: ${name}
+                Location: ${location}
+                Skills Offered: ${skillsOffered}
+                Skills Wanted: ${skillsWanted}
+                Availability: ${availability}
+
+                Focus on highlighting their strengths and what they are looking for.`;
+
+                profileSummaryTextarea.value = ''; // Clear previous summary
+                loadingIndicator.classList.remove('hidden'); // Show loading indicator
+
+                try {
+                    let chatHistory = [];
+                    chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                    const payload = { contents: chatHistory };
+                    const apiKey = ""; // Leave as empty string for Canvas to provide
+                    const apiUrl = https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey};
+
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const result = await response.json();
+
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const text = result.candidates[0].content.parts[0].text;
+                        profileSummaryTextarea.value = text;
+                    } else {
+                        profileSummaryTextarea.value = 'Failed to generate summary. Please try again.';
+                        console.error('Gemini API response structure unexpected:', result);
+                    }
+                } catch (error) {
+                    profileSummaryTextarea.value = 'An error occurred while generating the summary.';
+                    console.error('Error calling Gemini API:', error);
+                } finally {
+                    loadingIndicator.classList.add('hidden'); // Hide loading indicator
+                }
+            });
+        });
+    </script>
+</body>
+</html>

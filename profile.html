@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Swap - User Profile</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f0f0f; /* Very dark background */
+            color: #e0e0e0; /* Light text color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+
+        /* Subtle background pattern/gradient */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(79, 70, 229, 0.08) 0%, transparent 25%),
+                        radial-gradient(circle at bottom left, rgba(234, 88, 12, 0.06) 0%, transparent 25%);
+            z-index: -1;
+        }
+
+        .main-container {
+            background-color: #1a1a1a; /* Darker background for the main content box */
+            border: 1px solid #333;
+            border-radius: 1.5rem; /* More rounded corners */
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); /* Stronger shadow */
+            max-width: 700px; /* Wider container */
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #2a2a2a; /* Lighter separator */
+        }
+
+        .header-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .nav-links-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .nav-link-btn {
+            color: #a0a0a0;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 8px 15px;
+            border-radius: 0.75rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-link-btn:hover {
+            background-color: #2a2a2a;
+            color: #fff;
+        }
+
+        .profile-photo-circle {
+            width: 140px;
+            height: 140px;
+            border: 3px solid #6366f1; /* Vibrant border color */
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background-color: #2a2a2a;
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.4); /* Glow effect */
+        }
+
+        .profile-photo-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #c0c0c0;
+            margin-bottom: 8px;
+        }
+
+        .skill-tag {
+            background-color: #333;
+            color: #818cf8; /* Blue-purple for tags */
+            padding: 6px 12px;
+            border-radius: 9999px; /* Pill shape */
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid #4a4a4a;
+        }
+
+        .action-button {
+            background-color: #4f46e5; /* Primary blue */
+            color: white;
+            padding: 12px 25px;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .action-button:hover {
+            background-color: #4338ca;
+            transform: translateY(-2px);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+            .header-section {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            .nav-links-group {
+                width: 100%;
+                justify-content: flex-end;
+            }
+            .profile-info-grid {
+                grid-template-columns: 1fr;
+            }
+            .profile-photo-area {
+                order: -1; /* Move photo to top on small screens */
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Header Section -->
+        <div class="header-section">
+            <h1 class="header-title">User Profile</h1>
+            <div class="nav-links-group">
+                <a href="swap_request.html" class="nav-link-btn">Swap Request</a>
+                <a href="homepage.html" class="nav-link-btn">Home</a>
+            </div>
+        </div>
+
+        <!-- Profile Content -->
+        <div class="flex flex-col md:flex-row items-center md:items-start gap-8 py-4">
+            <div class="profile-photo-area flex flex-col items-center flex-shrink-0">
+                <div class="profile-photo-circle">
+                    <img src="https://placehold.co/140x140/333333/e0e0e0?text=User" alt="Profile Photo">
+                </div>
+                <p class="text-sm text-gray-400 mt-2">Rating: 4.5/5</p>
+            </div>
+
+            <div class="flex-grow text-center md:text-left">
+                <h2 class="text-3xl font-extrabold text-white mb-2">Marc Demo</h2>
+                <p class="text-gray-300 text-lg mb-4">Location: India</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-8 mt-6">
+                    <div>
+                        <p class="section-title">Skills Offered:</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">Graphic Design</span>
+                            <span class="skill-tag">Video Editing</span>
+                            <span class="skill-tag">Photoshop</span>
+                            <span class="skill-tag">Illustration</span>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="section-title">Skills Wanted:</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Web Development</span>
+                            <span class="skill-tag">Project Management</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 text-center md:text-left">
+                    <p class="section-title">Availability:</p>
+                    <p class="text-gray-200 text-base">Weekends & Evenings</p>
+                </div>
+
+                <div class="mt-8 text-center md:text-left">
+                    <a href="swap_request.html" class="action-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                        </svg>
+                        Send Swap Request
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
