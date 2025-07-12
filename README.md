@@ -1,9 +1,12 @@
 # Odoo--hackathon_Skill-Swap-Platform
 
 Team Name :- Tech Titans
-  Team Leader :-Minal Vijaykumar Prasad
-  Team Member 1 :-Pooja Mandal
-  Team Member 2 :-Roshan Singh
+
+  Team Leader :- Minal Vijaykumar Prasad
+  
+  Team Member 1 :- Pooja Mandal
+  
+  Team Member 2 :- Roshan Singh
 
 
 
